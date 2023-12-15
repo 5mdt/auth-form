@@ -1,5 +1,6 @@
 FROM node:21-alpine
-LABEL MAINTAINER="@nett00n"
+LABEL maintainer="@nett00n"
+LABEL org.website="https://github.com/5mdt"
 EXPOSE 80
 WORKDIR /src/
 COPY package.json package.json

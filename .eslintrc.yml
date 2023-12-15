@@ -1,0 +1,11 @@
+---
+env:
+  es2023: true
+  browser: true
+
+extends:
+  - eslint:recommended
+
+parserOptions:
+  ecmaVersion: 2023
+  sourceType: module
