@@ -1,0 +1,9 @@
+---
+services:
+  mock-api:
+    build: src/mock-api/
+  service:
+    build: src/auth-form/
+    ports:
+      - ${PUBLIC_PORT:-8080}:80
+version: '3'

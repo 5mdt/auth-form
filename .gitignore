@@ -1,0 +1,5 @@
+.*
+!.github
+!.gitignore
+!.markdownlint.yaml
+*:Zone.Identifier
