@@ -12,46 +12,60 @@ permissions:
   contents: write
 
 jobs:
-  run-linters:
-    name: Run linters
+  yamllint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
-
-      - name: 'Yamllint'
+      - name: "Yamllint"
         uses: karancode/yamllint-github-action@master
         with:
           yamllint_file_or_dir: ./
 
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
       - name: Lint markdown files
         uses: docker://avtodev/markdown-lint:v1
         with:
-          args: './'
+          args: "./"
 
+  jsonlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
       - name: Run JSON Lint
         env:
           SHOW_ERRORS: true
         run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/json-lint/master/pipeline.sh)
 
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
       - uses: hadolint/hadolint-action@v3.1.0
         with:
           recursive: true
 
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
       - name: Install NodeJS
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-
       - name: Install Dependencies
         run: npm install
         working-directory: src/auth-form
-
       - name: Install ESLint
         run: npm install eslint -DE
         working-directory: src/auth-form
-
       - name: Code Linting
         run: npm run lint
         working-directory: src/auth-form
