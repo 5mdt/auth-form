@@ -1,4 +1,5 @@
 .*
+!.env-example
 !.eslintrc.yml
 !.github
 !.gitignore
