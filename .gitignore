@@ -1,5 +1,8 @@
 .*
+!.eslintrc.yml
 !.github
 !.gitignore
+!.hadolint.yaml
 !.markdownlint.yaml
+!.yamllint
 *:Zone.Identifier

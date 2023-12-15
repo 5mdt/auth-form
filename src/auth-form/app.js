@@ -1,4 +1,4 @@
-const http = require('http');
+const http = require('http'); // eslint-disable-line no-undef
 
 http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
